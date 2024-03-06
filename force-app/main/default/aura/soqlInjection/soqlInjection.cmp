@@ -1,0 +1,16 @@
+<aura:component controller = 'SoqlInjectionExampleController' implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome" access="global">
+    <aura:attribute name="searchText" type="String" />
+    <aura:attribute name="data" type="List" />
+    <div class="slds-box slds-theme_default">
+        <lightning:input name="input1" label="Enter some text" value="{!v.searchText}" />
+        <lightning:button variant="brand"
+                          class="slds-m-top_x-small"
+                          label="Search" title="Base action" onclick="{! c.handleClick }"/>
+        <br/>
+
+        <!-- the container element determine the height of the datatable -->
+        <aura:iteration items="{!v.data}" var="item">
+            {!item.FirstName}&nbsp; {!item.LastName}<br/>
+        </aura:iteration>
+    </div>
+</aura:component>

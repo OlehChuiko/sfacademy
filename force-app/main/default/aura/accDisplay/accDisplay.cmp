@@ -1,0 +1,34 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" >
+	<aura:attribute name="record" type="Object" 
+  					description="The record object to be displayed"/>
+	<aura:attribute name="accountRecord" type="Object" 
+  					description="A simplified view record object to be displayed"/>
+	<aura:attribute name="recordError" type="String" 
+ 					description="An error message bound to force:recordData"/>
+
+    <force:recordData aura:id="accountRecordCreator"
+    layoutType="FULL"
+    recordId="{!v.recordId}"
+    targetError="{!v.recordError}"
+    targetRecord="{!v.record}"
+    targetFields="{!v.accountRecord}"
+    mode="VIEW"/>
+	
+    <!-- Display a header with details about the record -->
+<div class="slds-page-header" role="banner">
+   <ui:outputText value="{!v.accountRecord.Name}" class="slds-input" />
+    <ui:outputText value="{!v.accountRecord.Industry}" class="slds-input" />
+    <ui:outputTextArea value="{!v.accountRecord.Description}" class="slds-input"></ui:outputTextArea>
+    <ui:outputPhone value="{!v.accountRecord.Phone}" class="slds-input" />
+</div>
+
+<!-- Display Lightning Data Service errors, if any -->
+<aura:if isTrue="{!not(empty(v.recordError))}">
+    <div class="recordError">
+        <ui:message title="Error" severity="error" closable="true">
+            {!v.recordError}
+        </ui:message>
+    </div>
+</aura:if>
+
+</aura:component>

@@ -1,0 +1,19 @@
+<apex:page >
+    <!-- XSSDemo -->
+    <!--
+        /**
+         * Webkul Software.
+         *
+         * @category  Webkul
+         * @author    Webkul
+         * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+         * @license   https://store.webkul.com/license.html
+         */
+     -->
+    <div id='container'></div>
+    <script>
+      document.querySelector('#container').innerHTML='You searched for <b>{!$CurrentPage.parameters.param}</b>';
+    </script>
+
+    <a onClick="console.log(document.cookie)"> any text</a>
+</apex:page>

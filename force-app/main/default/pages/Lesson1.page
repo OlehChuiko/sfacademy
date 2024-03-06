@@ -1,0 +1,14 @@
+<apex:page controller="ContactCreator">
+    
+	<apex:form >
+
+        Name : <br/><apex:inputText value="{! name }" /> <br/><br/>
+        FirstName : <br/><apex:inputText value="{! firstName }" />  <br/><br/>
+        LastName : <br/><apex:inputText value="{! lastName }" /> <br/><br/>
+        Account : <br/><apex:inputText value="{! accountLookupId }" /> <br/><br/>
+        
+        <apex:commandButton value="create" action="{!create2}" rendered="{! IsVisibleContact }" />
+        
+    </apex:form>    
+    
+</apex:page>

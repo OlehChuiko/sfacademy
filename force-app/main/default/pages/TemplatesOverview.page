@@ -1,0 +1,130 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" controller="TemplatesOverviewcontroller">
+
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+    	<head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>Salesforce Lightning Design System Trailhead Module</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+    	</head>
+        <body>           
+        
+            <div class="slds-scope">
+                <apex:form >
+                    <apex:selectList value="{!templates}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!items}"/>
+                    </apex:selectList><p/>
+            
+                    <apex:commandButton value="Test" action="{!test}" rerender="out" status="status"/>
+                </apex:form>
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+                 <thead>
+                    <tr class="slds-text-title_caps">
+                      <th scope="col" colspan="2">
+                        <div class="slds-truncate" title="In Progress">In Progress</div>
+                      </th>
+                      <th scope="col" colspan="2">
+                        <div class="slds-truncate" title="Submitted">Submitted</div>
+                      </th>
+                      <th scope="col" colspan="2">
+                        <div class="slds-truncate" title="Rejected">Rejected</div>
+                      </th>
+                      <th scope="col" colspan="2">
+                        <div class="slds-truncate" title="Approved">Approved</div>
+                      </th>
+                     </tr>
+                     <tr class="slds-text-title_caps">
+                      <th scope="col" >
+                        <div class="slds-truncate" title="In Progress">Templates</div>
+                      </th>
+                      <th scope="col" >
+                        <div class="slds-truncate" title="Submitted">Details</div>
+                      </th>
+                      <th scope="col" >
+                        <div class="slds-truncate" title="Rejected">Templates</div>
+                      </th>
+                      <th scope="col" >
+                        <div class="slds-truncate" title="Approved">Details</div>
+                      </th>
+                         <th scope="col" >
+                        <div class="slds-truncate" title="In Progress">Templates</div>
+                      </th>
+                      <th scope="col" >
+                        <div class="slds-truncate" title="Submitted">Details</div>
+                      </th>
+                      <th scope="col" >
+                        <div class="slds-truncate" title="Rejected">Templates</div>
+                      </th>
+                      <th scope="col" >
+                        <div class="slds-truncate" title="Approved">Details</div>
+                      </th>
+                     </tr>
+                     
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row" data-label="Opportunity Name">
+                        <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                      </th>
+                      <td data-label="Account Name">
+                        <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                      </td>
+                      <td data-label="Close Date">
+                        <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                      </td>
+                      <td data-label="Prospecting">
+                        <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                      </td>
+                      <td data-label="Confidence">
+                        <div class="slds-truncate" title="20%">20%</div>
+                      </td>
+                      <td data-label="Amount">
+                        <div class="slds-truncate" title="$25k">$25k</div>
+                      </td>
+                      <td data-label="Contact">
+                        <div class="slds-truncate" title="jrogers@cloudhub.com"><a href="javascript:void(0);">jrogers@cloudhub.com</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row" data-label="Opportunity Name">
+                        <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                      </th>
+                      <td data-label="Account Name">
+                        <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                      </td>
+                      <td data-label="Close Date">
+                        <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                      </td>
+                      <td data-label="Prospecting">
+                        <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                      </td>
+                      <td data-label="Confidence">
+                        <div class="slds-truncate" title="20%">20%</div>
+                      </td>
+                      <td data-label="Amount">
+                        <div class="slds-truncate" title="$25k">$25k</div>
+                      </td>
+                      <td data-label="Contact">
+                        <div class="slds-truncate" title="jrogers@cloudhub.com"><a href="javascript:void(0);">jrogers@cloudhub.com</a></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            
+                <apex:outputPanel id="out">
+                    <apex:actionstatus id="status" startText="testing...">
+                        <apex:facet name="stop">
+                            <apex:outputPanel >
+                                <p>You have selected:</p>
+                                <apex:dataList value="{!templates}" var="c">{!c}</apex:dataList>
+                            </apex:outputPanel>
+                        </apex:facet>
+                    </apex:actionstatus>
+                </apex:outputPanel>
+            </div>
+            </body>
+        </html>
+</apex:page>

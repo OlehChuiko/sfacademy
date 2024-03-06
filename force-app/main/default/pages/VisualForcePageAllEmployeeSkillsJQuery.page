@@ -1,0 +1,65 @@
+<apex:page controller="AllEmployeeSkillsControllerJQuery" showHeader="true" sidebar="true">
+<apex:form >
+	<head>
+		<apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js" / >
+		<apex:includescript value="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" />
+		<apex:stylesheet value="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
+		<script>
+			j$ = jQuery.noConflict();
+			j$(document).ready( function () {
+				var contactTable = j$('[id$="contacttable"]').DataTable({
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<table id="contacttable" class="display">
+			<thead>
+				<tr>
+					<th>Employee</th>
+					<th>Skill Features</th>
+								
+				</tr>
+			</thead>
+			<tbody>
+			 <apex:repeat value="{!empSkillWrapper}" var="e">
+                <tr>
+                    <td>
+                        <apex:inputCheckbox value="{!e.checkbox}"/>
+                        <apex:outputField value="{!e.employee.Name}"/>
+                    </td>
+                    <td>
+                        <apex:repeat value="{!e.skill}" var="skill">
+                            <apex:pageBlock >
+                                <apex:pageBlockSection >
+                                    <apex:inputField value="{!skill.Name}"/>
+                                </apex:pageBlockSection>
+                                <apex:pageBlockSection >
+                                    <apex:inputField value="{!skill.Skill_Category__c}"/>
+                                </apex:pageBlockSection>
+                                <apex:pageBlockSection >
+                                    <apex:inputField value="{!skill.Experience__c}"/>
+                                </apex:pageBlockSection>
+                           
+                                <apex:pageBlockSection >
+                                    <apex:inputField value="{!skill.Grade__c}"/>
+                                </apex:pageBlockSection>
+                            </apex:pageBlock>
+                        </apex:repeat>
+                   </td>
+                </tr>
+            </apex:repeat>
+ 				<apex:pageBlock >
+                    <apex:pageBlockSection >
+                    	<apex:commandButton value="Save" action="{! editSkills }" >
+                        	<apex:param name="Save" value="{!empSkillWrapper}" />
+                		</apex:commandButton>
+                		<apex:pageMessages id="showmsg"></apex:pageMessages>
+                    </apex:pageBlockSection>                               
+                </apex:pageBlock>
+			</tbody>
+		</table>
+	</body>
+	</apex:form>
+</apex:page>

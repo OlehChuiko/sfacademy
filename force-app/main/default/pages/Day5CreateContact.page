@@ -1,0 +1,47 @@
+<apex:page controller="Day5CreateContactController" >
+    <apex:form >
+    
+        <apex:pageBlock id="main_panel" >            
+           
+            <apex:pageBlockTable value="{! contacts }" var="cont">
+                    
+                    <apex:column headerValue="First Name">
+                        {! cont.firstName__c }
+                    </apex:column>
+                    
+                    <apex:column headerValue="Last Name">
+                        {! cont.lastName__c }
+                    </apex:column>
+                    	
+                	<apex:column headerValue="actions">
+                        <apex:commandLink value="edit" action="{!editRecord}" >
+                            <apex:param name="test" value="{! cont.Id }" assignTo="{! currentRecordId }" />
+                        </apex:commandLink>
+                        <span> | </span>                    
+                        <apex:commandLink value="delete" action="{!deleteRecord}" >
+                            <apex:param name="test" value="{! cont.Id }" assignTo="{! currentRecordId }" />
+                        </apex:commandLink>
+                    </apex:column>           
+
+                </apex:pageBlockTable>        
+            
+        </apex:pageBlock>      
+        
+       
+        <apex:pageBlock title="My Content" mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="My Content Section" columns="2">
+                <apex:inputField value="{!customContact.FirstName__c}"/>
+                <apex:inputField value="{!customContact.LastName__c}"/>
+               
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+  
+    
+   </apex:form>
+    
+    
+</apex:page>

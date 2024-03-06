@@ -1,0 +1,13 @@
+<apex:page id="ExamplePage" controller="ExamplePageController" tabStyle="lead">
+    <apex:pageBlock >
+        <apex:form >
+            <h1>Test page for adding leads</h1>
+            <p> This is a test page for adding leads.</p>
+            <p>First name: <apex:inputText value="{!firstName}"></apex:inputText> </p>
+            <p>Last name: <apex:inputText value="{!lastName}"></apex:inputText> </p>
+            <p>Company: <apex:inputText value="{!company}"></apex:inputText> </p>
+            <p>Email: <apex:inputText value="{!email}"></apex:inputText> </p>
+            <apex:commandButton action="{!save}" value="Save New Lead"/>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

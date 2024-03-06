@@ -1,0 +1,19 @@
+<apex:page docType="html-5.0" controller="XSSController">
+    <!-- XSSDemo -->
+    <div id='container'></div>
+    <script>
+      document.querySelector('#container').innerHTML='Latest Comment <b>{!JSENCODE(HTMLENCODE(LatestComment))}</b>';
+    </script>
+    <apex:form >
+        <apex:pageBlock id="pb">
+            <apex:pageBlockTable value="{!comments}" var="c" align="center">
+                <apex:column headerValue="User" value="{!c.CreatedBy.Name}" />
+                <apex:column headerValue="Comment" value="{!c.Text1__c}" />
+                <apex:column headerValue="Date" value="{!c.CreatedDate}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+        <apex:input label="Enter New Commment" value="{!newComment}" id="commentInput"/>
+        <apex:commandButton value="Save" id="SaveButton" action="{!save}"/>
+    </apex:form>
+</apex:page>

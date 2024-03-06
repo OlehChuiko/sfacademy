@@ -1,0 +1,15 @@
+<apex:page controller="Lesson3_contactListController" >
+        
+    <apex:repeat value="{! contacts }" var="cont">
+    
+        <apex:outputPanel rendered="{! hasContactAccessed }">
+        	<a target="_blank" href="/{! cont.recordId }" >{! cont.firstName } {! cont.lastName }</a><br/>
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{! !hasContactAccessed }">
+        	{! cont.firstName } {! cont.lastName }<br/>
+        </apex:outputPanel>        
+        
+    </apex:repeat>
+    
+</apex:page>

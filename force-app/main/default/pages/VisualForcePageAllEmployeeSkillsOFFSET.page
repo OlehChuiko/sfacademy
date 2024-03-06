@@ -1,0 +1,30 @@
+<apex:page controller="AllEmployeeSkillsControllerOFFSET">
+<apex:form >
+	<apex:pageBlock id="pb">   
+		<apex:pageBlockTable value="{!employees}" var="e" align="center">
+				   <apex:column headerValue="Employee Name" value="{!e.Name}"/>  
+		            <apex:column headerValue="Employee Skills" >  
+		          		 <apex:repeat value="{!e.EmployeeSkills__r}" var="emps">
+		          		 	<a href='/{!emps.Id}'> {!emps.Name}</a> <br/>
+		               	 </apex:repeat>
+		            </apex:column>			        
+			    </apex:pageBlockTable>
+
+		   <apex:pageBlockButtons location="bottom" >
+		   <apex:outputPanel id="myButtons">
+		   
+		        <apex:commandButton action="{!Beginning}" title="First Page" value="<<" disabled="{!disablePrevious}" reRender="myPanel,myButtons"/>
+		        <apex:commandButton action="{!Previous}" title="Previous Page" value="<" disabled="{!disablePrevious}" reRender="myPanel,myButtons"/>        
+		        <apex:commandButton action="{!Next}" title="Next" value=">" disabled="{!disableNext}" reRender="myPanel,myButtons"/>
+		        <apex:commandButton action="{!End}" title="End" value=">>" disabled="{!disableNext}" reRender="myPanel,myButtons"/>    
+		        <apex:outputText >{!pageNumber} of {!totalPages}</apex:outputText>    
+		  
+		   </apex:outputPanel>
+		   </apex:pageBlockButtons>
+
+		    
+			   
+			  
+	</apex:pageBlock>
+</apex:form>
+</apex:page>

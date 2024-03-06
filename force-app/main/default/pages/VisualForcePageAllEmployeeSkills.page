@@ -1,0 +1,25 @@
+<apex:page controller="AllEmployeeSkillsController" >
+	<apex:form >
+	   <apex:pageBlock id="pb">
+	        <apex:PageBlockTable value="{!employees}" var="e">
+	            <apex:column headerValue="Employee Name" value="{!e.Name}"/>  
+	            <apex:column headerValue="Employee Skills" >  
+	          		 <apex:repeat value="{!e.EmployeeSkills__r}" var="emps">
+	          		 	<a href='/{!emps.Id}'> {!emps.Name}</a> <br/>
+	               	 </apex:repeat>
+	            </apex:column>
+	        </apex:PageBlockTable>
+	        <apex:panelGrid columns="7">
+	                <apex:commandButton status="fetchStatus" reRender="pb" value="<<" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+	                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+	                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+	                <apex:commandButton status="fetchStatus" reRender="pb" value=">>" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+	                <apex:outputText >{!(setCon.pageNumber * size)+1-size}-{!IF((setCon.pageNumber * size)>noOfRecords, noOfRecords,(setCon.pageNumber * size))} of {!noOfRecords}</apex:outputText>
+	                <apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" title="Refresh Page"/>
+	                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+	                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+	                </apex:outputPanel>
+	            </apex:panelGrid>
+	    </apex:pageBlock>
+	</apex:form>
+</apex:page>

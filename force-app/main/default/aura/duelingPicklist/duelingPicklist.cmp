@@ -1,0 +1,39 @@
+<aura:component implements="flexipage:availableForRecordHome,force:appHostable" access="global"
+                controller="DuelingPicklistVer2CompController">
+    <aura:attribute name="listOptions" type="List" default="[]"/>
+    <aura:attribute name="defaultOptions" type="List" default="[]"/>
+    <aura:attribute name="requiredOptions" type="List" default="[]"/>
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+
+    <form class="slds-form--inline">
+        <div class="slds-box slds-box--small">
+            <div class="slds-form-element">
+                <button class="slds-button slds-button--brand" type="button" onclick="{!c.showModal}">Select Stages 1</button>
+            </div>
+        </div>
+    </form>
+
+    <div role="dialog" aura:id="searchModal" tabindex="-1" class="slds-modal slds-fade-in-hide" aria-labelledby="header43">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h2 id="header43" class="slds-text-heading--medium">Select sync stages</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <lightning:dualListbox aura:id="selectOptions" name="Select Options"  label=""
+                                       sourceLabel="Available Opportunity Sync Stages"
+                                       selectedLabel="Selected Opportunity Sync Stages"
+                                       options="{! v.listOptions }"
+                                       value="{! v.defaultOptions }"
+                                       requiredOptions="{! v.requiredOptions }"
+                                       onchange="{! c.handleChange }"/>
+
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">Cancel</button>
+                <button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.save}">Save</button>
+            </div>
+        </div>
+    </div>
+    <div aura:id="backdrop" class="slds-backdrop slds-backdrop--hide"></div>
+
+</aura:component>

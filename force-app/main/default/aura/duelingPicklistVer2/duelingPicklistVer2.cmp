@@ -1,0 +1,60 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable" access="global" 
+                controller="DuelingPicklistVer2CompController">
+    <aura:attribute name="stages" type="Sync_Opportunity_Stage__mdt" default="{'Stage_Name_c__c':'Select Stage'}"/>
+    <aura:attribute name="leftStages" type="List"/>
+    <aura:attribute name="rightStages" type="List"/>
+  <!--  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
+    <form class="slds-form--inline">
+        <div class="slds-box slds-box--small">            
+            <div class="slds-form-element">
+                <button class="slds-button slds-button--brand" type="button" onclick="{!c.showModal}">Select Stages 2</button>
+            </div>
+        </div>
+    </form>
+    
+    <div role="dialog" aura:id="searchModal" tabindex="-1" class="slds-modal slds-fade-in-hide" aria-labelledby="header43">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h2 id="header43" class="slds-text-heading--medium">Select sync stages</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">              
+                
+                
+                
+                <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                    <div class="slds-p-horizontal--small slds-size--1-of-2 slds-medium-size--2-of-6 slds-large-size--5-of-12">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="select-01">Available Opportunity Sync Stages</label>
+                            <div class="slds-form-element__control">
+                                <ui:inputSelect aura:id="leftOptions" class="slds-select select--height " multiple="true">                                 
+                                </ui:inputSelect> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-align-middle slds-size--1-of-2 slds-medium-size--1-of-6 slds-large-size--1-of-12">
+                        <button class="slds-button slds-button--icon btnmargin" onclick="{!c.moveLeft}" >
+                             <lightning:icon iconName="utility:chevronleft" size="small" alternativeText="Left"/>
+                        </button>
+                        <button class="slds-button slds-button--icon btnmargin" onclick="{!c.moveRight}" >
+                            <lightning:icon iconName="utility:chevronright" size="small" alternativeText="Right"/>
+                        </button>
+                    </div>
+                    <div class="slds-p-horizontal--small slds-size--1-of-2 slds-medium-size--2-of-6 slds-large-size--5-of-12">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="select-01">Selected Opportunity Sync Stages</label>
+                            <div class="slds-form-element__control">
+                                <ui:inputSelect aura:id="rightOptions"  class="slds-select select--height" multiple="true">                                    
+                                </ui:inputSelect>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">Cancel</button>
+                <button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.save}">Save</button>
+            </div>
+        </div>
+    </div>
+    <div aura:id="backdrop" class="slds-backdrop slds-backdrop--hide"></div>
+</aura:component>

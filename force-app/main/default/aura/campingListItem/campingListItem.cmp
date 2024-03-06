@@ -1,0 +1,90 @@
+<aura:component >
+    <aura:attribute name="item" type="Camping_Item__c" required="true">
+    <p> <ui:outputText value="{!v.item.Name}"/> </p>
+    <p> <ui:outputCurrency value="{!v.item.Price__c}"/> </p>
+    <p> <ui:outputNumber value="{!v.item.Quantity__c}"/> </p>
+    <p> <ui:outputCheckBox value="{!v.item.Packed__c}"/> </p>    
+    <p> <ui:button label="Packed!" press="{!c.packItem}"/></p>
+    </aura:attribute>
+    
+    <aura:attribute name="newItem" type="Camping_Item__c"
+ default="{ 'sobjectType': 'Camping_Item__c',
+                'Name': '',
+                'Quantity__c': 0,
+                'Price__c': 0,
+                'Packed__c': false }"/>
+
+<aura:attribute name="items" type="Camping_Item__c[]"/>
+
+<ol>
+<li>Bug Spray</li>
+<li>Bear Repellant</li>
+<li>Goat Food</li>
+</ol>
+
+<!-- CREATE NEW ITEM FORM -->
+<form class="slds-form--stacked">
+
+  <div class="slds-form-element slds-is-required">
+      <div class="slds-form-element__control">
+          <ui:inputText aura:id="itemname" label="Name"
+              class="slds-input"
+              labelClass="slds-form-element__label"
+              value="{!v.newItem.Name}"
+              required="true"/>
+      </div>
+ </div>
+
+ <div class="slds-form-element slds-is-required">
+      <div class="slds-form-element__control">
+          <ui:inputNumber aura:id="quantity" label="Quantity"
+              class="slds-input"
+              labelClass="slds-form-element__label"
+              value="{!v.newItem.Quantity__c}"
+              required="true"/>
+
+      </div>
+  </div>
+
+  <div class="slds-form-element">
+      <div class="slds-form-element__control">
+          <ui:inputCurrency aura:id="price" label="Price"
+              class="slds-input"
+              labelClass="slds-form-element__label"
+              value="{!v.newItem.Price__c}"
+              />
+      </div>
+  </div>
+
+  <div class="slds-form-element">
+      <ui:inputCheckbox aura:id="packed" label="Packed?"
+          class="slds-checkbox"
+          labelClass="slds-form-element__label"
+          value="{!v.newItem.Packed__c}"/>
+  </div>
+
+  <div class="slds-form-element">
+      <ui:button label="Create Camping Item"
+          class="slds-button slds-button--brand"
+          press="{!c.clickCreateItem}"/>
+  </div>
+
+</form>
+<!-- / CREATE NEW ITEM FORM -->
+
+
+
+<div class="slds-card slds-p-top--medium">
+    <header class="slds-card__header">
+        <h3 class="slds-text-heading--small">Items</h3>
+    </header>
+
+    <section class="slds-card__body">
+        <div id="list" class="row">
+            <aura:iteration items="{!v.items}" var="items">
+                <c:campingListItem item="{!item}"/>
+            </aura:iteration>
+        </div>
+    </section>
+</div>
+</aura:component>

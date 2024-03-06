@@ -1,0 +1,15 @@
+<aura:component >
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="selectedValue" type="String" default="Closed Won"/>
+    <aura:handler name="init" value="{!this}" action="{!c.loadOptions}" />
+    <div class="slds-form-element">
+  <label class="slds-form-element__label" for="select-01">Select Stages</label>
+  <div class="slds-form-element__control">
+    <select name="mySelect" label="Select a color:" aura:id="mySelect" value="{!v.selectedValue}" class="slds-select" multiple="true" size="12">
+        <aura:iteration items="{!v.options}" var="item">
+            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+         </aura:iteration>
+      </select>
+      </div>
+</div>
+</aura:component>

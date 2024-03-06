@@ -18,7 +18,7 @@ public class AccountDao {
         for (Account acc : accsWithContacts) {
             accIdToContactsMap.put(acc.Id, acc.Contacts);
         }
-        System.debug('10');
+        System.debug('Changes for GitHub');
         return accIdToContactsMap;
     }
 }
